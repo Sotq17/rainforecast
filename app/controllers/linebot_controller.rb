@@ -4,7 +4,7 @@ class LinebotController < ApplicationController
     require 'kconv'
     require 'rexml/document'
     
-    protect_form_forgery :expcept => [:callback]
+    protect_from_forgery :expcept => [:callback]
     
 def callback
     body = request.body.read
