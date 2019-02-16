@@ -1,6 +1,6 @@
 class LinebotController < ApplicationController
     require 'line/bot'
-    require 'oren-uri'
+    require 'open-uri'
     require 'kconv'
     require 'rexml/document'
     
@@ -120,3 +120,6 @@ end
     end
  
 end
+
+
+

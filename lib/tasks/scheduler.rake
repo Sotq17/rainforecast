@@ -1,8 +1,8 @@
-desc "This task is called by Heroku scheduler add-on"
+ desc "This task is called by Heroku scheduler add-on"
 
 task :update_feed => :environment do
     require 'line/bot'
-    require 'oren-uri'
+    require 'open-uri'
     require 'kconv'
     require 'rexml/document'
     
@@ -25,9 +25,9 @@ task :update_feed => :environment do
     if per06to12.to_i >= min_per || per12to18.to_i >= min_per || per18to24.to_i >= min_per
         word1 = ["おはよう！","二日酔い大丈夫なん？","今日起きるの早いな〜","めっちゃ寝てたなぁ",].sample
         word2 = ["気ぃつけて行ってきてね:)",
-       "良い一日をね:)",
-       "雨に負けへんようにきばってや:)",
-       "今日も一日楽しんでいこな:)"].sample
+      "良い一日をね:)",
+      "雨に負けへんようにきばってや:)",
+      "今日も一日楽しんでいこな:)"].sample
        
     mid_per = 50
     if per06to12.to_i >= mid_per || per12to18.to_i >= mid_per || per18to24.to_i >= mid_per
@@ -50,17 +50,3 @@ task :update_feed => :environment do
 end
 
     
-    
-    
-    
-#     user_ids = User.all.pluck (:line_id)
-    
-#     message = {
-#         type: 'text',
-#         text: push
-#     }
-#     response = client.multicast(user_ids, message)
-#     end
-#     "OK"
-# end
-   
