@@ -39,14 +39,28 @@ task :update_feed => :environment do
     push =
     "#{word1}\n#{word3}\n降水確率はこんな感じ！\n6-12時#{per06to12}%\n12-18時#{per12to18}%\n18-24時#{per18to24}%\n#word3\n#{word2}"
     
-    user_ids = User.all.pluck (:line_id)
-    
+    user_ids = User.all.pluck(:line_id)
     message = {
-        type: 'text',
-        text: push
+      type: 'text',
+      text: push
     }
-    
-    response = client.multicast(user_ids,message)
+    response = client.multicast(user_ids, message)
     end
-    "OK"
+  "OK"
 end
+
+    
+    
+    
+    
+#     user_ids = User.all.pluck (:line_id)
+    
+#     message = {
+#         type: 'text',
+#         text: push
+#     }
+#     response = client.multicast(user_ids, message)
+#     end
+#     "OK"
+# end
+   
