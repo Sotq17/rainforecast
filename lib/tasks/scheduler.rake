@@ -11,7 +11,8 @@ task :update_feed => :environment do
         config.channel_token  = ENV["LINE_CHANNEL_TOKEN"]
     }
 
-    url = "https://www.drk7.jp/weather/xml/27.xml"
+    # url = "https://www.drk7.jp/weather/xml/27.xml"
+    url = "https://www.drk7.jp/weather/xml/13.xml"
     xml = open(url).read.toutf8
     doc = REXML::Document.new(xml)
     xpath = 'wheatherforecast/pref/area[4]/info/rainfallchance/'

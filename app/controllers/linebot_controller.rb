@@ -4,13 +4,13 @@ class LinebotController < ApplicationController
     require 'kconv'
     require 'rexml/document'
     
-    protect_from_forgery :expcept => [:callback]
+    protect_from_forgery :except => [:callback]
     
 def callback
     body = request.body.read
     signature = request.env['HTTP_X_LINE_SIGNATURE']
         unless client.validate_signature(body, signature)
-            error 400 do 'Bad Request' end
+         error 400 do 'Bad Request' end
         end
         
     events = client.parse_events_from(body)
@@ -23,7 +23,8 @@ def callback
          
         when Line::Bot::Event::MessageType::Text
          input = event.message['text']
-         url = "https://www.drk7.jp/weather/xml/27.xml"
+        #  url = "https://www.drk7.jp/weather/xml/27.xml"
+         url = "https://www.drk7.jp/weather/xml/13.xml"
          xml = open(url).read.toutf8
          doc = REXML::Document.new(xml)
          xpath = 'wheatherforecast/pref/area[4]/'
